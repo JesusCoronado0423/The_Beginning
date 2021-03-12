@@ -7,34 +7,38 @@ function login(){
     
     let user_name = $("#user_name").val();
     let password = $("#password").val();
-    
-    $.ajax({
-        url: "../controller/controller.php?accion=login",
-        type: "post",
-        data: {user_name:user_name,password:password},
-        dataType: "JSON",
-        success: function(res){
-            if(res.encontrado){
-                alert(res.mensaje);
-                $("#user_name").val("");
-                $("#password").val("");
-                setTimeout("location.href='../view/pagina_principal.php'", 40);
-            }else{
-                alert(res.mensaje);
-                $("#user_name").val("");
-                $("#password").val("");
+    if(user_name == "" || password == ""){
+        alert("Tienes que llenar todos los apartados")
+    }else{
+        $.ajax({
+            url: "../controller/controller.php?accion=login",
+            type: "post",
+            data: {user_name:user_name,password:password},
+            dataType: "JSON",
+            success: function(res){
+                if(res.encontrado){
+                    alert(res.mensaje);
+                    $("#user_name").val("");
+                    $("#password").val("");
+                    setTimeout("location.href='../view/pagina_principal.php'", 40);
+                }else{
+                    alert(res.mensaje);
+                    $("#user_name").val("");
+                    $("#password").val("");
+                }
+            //    if(res == "You are the admin... BIENVENIDO..."){
+            //         alert(res);
+            //         setTimeout("location.href='../view/pagina_principal.php'", 40);
+            //    }else{
+            //         alert("Nose que pedo");
+            //    }
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(textStatus, errorThrown);
             }
-        //    if(res == "You are the admin... BIENVENIDO..."){
-        //         alert(res);
-        //         setTimeout("location.href='../view/pagina_principal.php'", 40);
-        //    }else{
-        //         alert("Nose que pedo");
-        //    }
-        },
-        error: function(jqXHR, textStatus, errorThrown){
-            console.log(textStatus, errorThrown);
-        }
-    });
+        });
+    }
+   
 }
 
 function insert(){
@@ -43,26 +47,32 @@ function insert(){
     let email = $("#email").val();
     let phone = $("#phone").val();
 
-    $.ajax({
-        url: "../controller/controller.php?accion=insert",
-        type: "post",
-        data: {name:name, last_name:last_name, email:email, phone:phone},
-        success: function(){
-            $("#name").val("");
-            $("#last_name").val("");
-            $("#email").val("");
-            $("#phone").val("");
-            //Aqui recargamos la tabla para que se actualicen los datos sin tener que salirnos del modal y recargar la pagina
-            $("#tbody").load(" #tbody");
-        },
-        error: function(jqXHR, textStatus, errorThrown){
-            console.log(textStatus, errorThrown);
-        }
-    });
+    if(name == "" || last_name == "" || email == "" || phone == ""){
+        alert("Tienes que llenar todos los campos");
+    }else{
+        $.ajax({
+            url: "../controller/controller.php?accion=insert",
+            type: "post",
+            data: {name:name, last_name:last_name, email:email, phone:phone},
+            success: function(){
+                $("#name").val("");
+                $("#last_name").val("");
+                $("#email").val("");
+                $("#phone").val("");
+                //Aqui recargamos la tabla para que se actualicen los datos sin tener que salirnos del modal y recargar la pagina
+                $("#tbody").load(" #tbody");
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(textStatus, errorThrown);
+            }
+        });
+    }
+   
 }
 
 function delet(idCUSTOMER){
-    
+    let confirmacion = confirm("Desea eliminar al cliente?");
+    if(confirmacion){
         $.ajax({
             url: "../controller/controller.php?accion=delete",
             type: "post",
@@ -75,8 +85,9 @@ function delet(idCUSTOMER){
                 console.log(textStatus, errorThrown);
             }
         });
-    
-
+    }else{
+        alert("No se elimino a nadie");
+    }
 }
 
 
