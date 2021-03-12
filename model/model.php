@@ -32,8 +32,9 @@ class Model{
             $variable["encontrado"] = false;
             $variable["mensaje"] = "The user or the employee are incorrect...";
         }
-        mysqli_close($conection); 
         echo json_encode($variable);
+        mysqli_close($conection); 
+        
 
 
 
@@ -116,21 +117,6 @@ class Model{
         }
         mysqli_close($conection);
 
-    }
-
-    function search(){
-
-        $conn = new ConectarDB();
-        $conection = $conn->conectar();
-
-        $search = $_REQUEST['search'];
-        $sql = "SELECT * FROM customers WHERE name LIKE '%$search%'";
-        $result = mysqli_query($conection,$sql);
-        
-        while ($row = mysqli_fetch_assoc($result)) {
-            $arr[] = $row;
-        }
-        // echo json_encode($arr);
     }
 
     function delete(){

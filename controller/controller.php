@@ -2,7 +2,6 @@
 require_once("../model/model.php");
 $conn = new Model();
 $show = $conn -> showData();
-$search = $conn -> search();
 
 $i = $_REQUEST["accion"];
 
@@ -15,11 +14,6 @@ switch ($i) {
     case "insert":
         $insert = new Controller();
         $insert -> insert();
-    break;
-
-    case "search":
-        $search = new Controller();
-        $search -> search();
     break;
 
     case "delete":
@@ -40,11 +34,6 @@ class Controller{
     function insert(){
         $model = new Model();
         $model -> insert();
-    }
-
-    function search(){
-        $model = new Model();
-        $model -> search();
     }
 
     function delete(){

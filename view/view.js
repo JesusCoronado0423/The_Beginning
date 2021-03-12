@@ -61,36 +61,15 @@ function insert(){
     });
 }
 
-function search(){
-    
-    let search = $("#search").val();
-    
-    $.ajax({
-        url: "../controller/controller.php?accion=search",
-        type: "post",
-        data: {search:search},
-        // dataType: "JSON",
-        success: function(res){
-            console.log(res);
-            // let arreglo = JSON.parse(res);
-            // console.log(arreglo);
-        },
-        error: function(jqXHR, textStatus, errorThrown){
-            console.log(textStatus, errorThrown);
-        }
-    });
-}
-
 function delet(idCUSTOMER){
-    // alert(idCUSTOMER);
+    
     if(confirm("Desea eliminar al usuario...")){
         $.ajax({
             url: "../controller/controller.php?accion=delete",
             type: "post",
             data: {idCUSTOMER:idCUSTOMER},
             success: function(){
-                alert("ACTION COMPLETED...");
-                $("#tbodyDelete").load(" #tbodyDelete");
+                alert("SE ELIMINO");
             },
             error: function(jqXHR, textStatus, errorThrown){
                 console.log(textStatus, errorThrown);
