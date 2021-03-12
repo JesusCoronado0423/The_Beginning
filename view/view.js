@@ -82,7 +82,7 @@ function search(){
 }
 
 function delet(idCUSTOMER){
-    // alert(idCUSTOMER);
+    alert(idCUSTOMER);
     if(confirm("Desea eliminar al usuario...")){
         $.ajax({
             url: "../controller/controller.php?accion=delete",
