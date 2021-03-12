@@ -63,19 +63,19 @@ function insert(){
 
 function delet(idCUSTOMER){
     
-    if(confirm("Desea eliminar al usuario...")){
         $.ajax({
             url: "../controller/controller.php?accion=delete",
             type: "post",
             data: {idCUSTOMER:idCUSTOMER},
             success: function(){
                 alert("SE ELIMINO");
+                $("#tbodyDelete").load(" #tbodyDelete");
             },
             error: function(jqXHR, textStatus, errorThrown){
                 console.log(textStatus, errorThrown);
             }
         });
-    }
+    
 
 }
 

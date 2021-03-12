@@ -124,7 +124,6 @@ class Model{
         $conection = $conn->conectar();
 
         $idCUSTOMER = $_REQUEST['idCUSTOMER'];
-        print_r($_REQUEST);
         $sql = "DELETE FROM customers WHERE idCUSTOMER = '$idCUSTOMER'";
         $result = mysqli_query($conection,$sql);
 
