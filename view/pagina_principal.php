@@ -116,12 +116,12 @@
             <tbody >
             <?php
                   require_once("../controller/controller.php");
-                  foreach($show as $index){
-                    echo "<tr><td>".$index['name'].
-                    "<td>".$index['last_name']."</td>".
-                    "<td>".$index['email']."</td>".
-                    "<td>".$index['phone']."</td>
-                    <td><button class='btn btn-danger' onclick='delet($index[idCUSTOMER])'>Delete</button></td></td></tr>";
+                  foreach($show as $index1){
+                    echo "<tr><td>".$index1['name'].
+                    "<td>".$index1['last_name']."</td>".
+                    "<td>".$index1['email']."</td>".
+                    "<td>".$index1['phone']."</td>
+                    <td><button class='btn btn-danger' onclick='delet($index1[idCUSTOMER])'>Delete</button></td></td></tr>";
                   }
                 ?>
             </tbody>

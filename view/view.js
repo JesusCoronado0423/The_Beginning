@@ -2,7 +2,7 @@ $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
 })
 
-
+//Pilu joto 
 function login(){
     
     let user_name = $("#user_name").val();
